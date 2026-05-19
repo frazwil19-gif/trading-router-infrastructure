@@ -11,6 +11,36 @@ Public documentation for a multi-year systematic trading infrastructure project 
 
 ---
 
+## Full System Architecture
+
+![System Architecture](./diagrams/system_architecture.png)
+
+---
+
+## Strategy Dispatch Architecture
+
+![Strategy Dispatch](./diagrams/strategy_dispatch.png)
+
+---
+
+## Risk Engine
+
+![Risk Engine](./diagrams/risk_engine_flow.png)
+
+---
+
+## Telemetry & Research Pipeline
+
+![Telemetry Pipeline](./diagrams/telemetry_pipeline.png)
+
+---
+
+## Version Evolution Timeline
+
+![Version Timeline](./diagrams/version_timeline.png)
+
+---
+
 ## Project Context
 
 This project began in 2024 as a small research and automation workflow and has evolved through repeated rebuilds into a larger Python-based trading infrastructure stack.
@@ -28,18 +58,6 @@ It is not a profitability record and does not make trading-performance claims.
 
 ---
 
-## System Overview
-
-```text
-TradingView Alerts → Python Router → Signal Validation → Strategy Dispatch
-                                                             ↓
-                              Pre-Trade Filters → Risk Engine → Execution Routing
-                                                             ↓
-                                  Telemetry · Logging · Analytics · Research Reports
-```
-
----
-
 ## Core Architecture
 
 | Layer | Purpose |
@@ -51,53 +69,6 @@ TradingView Alerts → Python Router → Signal Validation → Strategy Dispatch
 | Risk layer | Applies independent position/risk controls before execution |
 | Execution layer | Routes approved orders through broker/execution interfaces |
 | Telemetry layer | Logs events for monitoring, analytics, and research review |
-
----
-
-## Risk Engine Design
-
-The system is documented around independent risk-control layers rather than a single monolithic risk function.
-
-```text
-Valid Signal → R-Sizer → Daily Lock → Consecutive SL Guard → Session Gate
-      → Symbol Gate → Variance-Aware Risk Budget → Survival Mode → Approve/Reject
-```
-
-Design principle: each layer should be independently testable, auditable, and logged.
-
----
-
-## Public Assets In This Repository
-
-```text
-trading-router-infrastructure/
-├── README.md
-├── ARCHITECTURE.md
-├── docs/
-│   ├── risk-engine.md
-│   ├── session-filters.md
-│   ├── strategy-profiles.md
-│   └── execution-routing.md
-├── research/
-│   ├── README.md
-│   ├── safemode-analysis.md
-│   └── calibration-pipeline.md
-├── diagrams/
-│   ├── README.md
-│   ├── system_architecture.mmd
-│   ├── risk_engine_flow.mmd
-│   └── strategy_dispatch.mmd
-├── examples/
-│   ├── README.md
-│   ├── ev_stats_schema.json
-│   ├── safemode_event_schema.json
-│   └── risk_engine_pseudocode.py
-└── analytics/
-    ├── README.md
-    ├── safemode_dashboard.py
-    ├── monte_carlo_dashboard.py
-    └── ev_stats_chart.py
-```
 
 ---
 
